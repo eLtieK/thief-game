@@ -1,0 +1,2 @@
+THIEF_POSITION = []
+THIEF_PATH = ""

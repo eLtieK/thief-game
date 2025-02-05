@@ -21,7 +21,7 @@ class Game:
     def spawn_thief(self):
         thief_image = pygame.Surface((50,50))
         thief_image.fill((255,0,0))
-        Thief(self.all_sprites, (WINDOW_WIDTH / 2, WINDOW_WIDTH / 2), thief_image)
+        Thief(self.all_sprites, thief_image)
 
     def stop(self):
         self.running = False
