@@ -19,15 +19,15 @@ class Game:
         pygame.time.set_timer(self.thief_event, 300)
 
     def spawn_thief(self):
-        thief_image = pygame.Surface((50,50))
-        thief_image.fill((255,0,0))
-        Thief(self.all_sprites, thief_image)
+        Thief(self.all_sprites)
 
     def stop(self):
         self.running = False
         
-    def background(self):
-        self.display_surface.fill((255,255,255))
+    def background(self, image_path):
+        image = pygame.image.load(image_path)  # Tải ảnh nền
+        image = pygame.transform.scale(image, self.display_surface.get_size())  # Căn chỉnh kích thước nền
+        self.display_surface.blit(image, (0, 0))  # Vẽ hình nền lên màn hình
 
     def kill_thief(self):
         mouse_pos = pygame.mouse.get_pos()
@@ -53,7 +53,7 @@ class Game:
             # update
 
             # draw
-            self.background()
+            self.background(BACKGROUND_PATH)
             self.all_sprites.draw(self.display_surface)
             print(self.all_sprites)
             pygame.display.update()
