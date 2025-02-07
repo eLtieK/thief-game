@@ -8,8 +8,8 @@ THIEF_POSITION = [
     (220,550), (320,550), (418,550), (515,550)
 ]
 INTRO_PATHS = {
-    "begin_image": join('resources', 'images', 'intro', 'Begin1.png'),
-    "begin_image_red": join('resources', 'images', 'intro', 'Begin3.png')
+    "begin_image": join('resources', 'images', 'intro', 'begin5.png'),
+    "begin_image_red": join('resources', 'images', 'intro', 'begin6.png')
 }
 
 def THIEF_PATH(path=None):
