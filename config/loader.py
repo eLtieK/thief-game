@@ -17,8 +17,12 @@ def THIEF_PATH(path=None):
         path = "thief" + str(random.randint(1,8)) + '.png'
     return join('resources', 'images', 'thief', path)
 GUN_PATH = join('resources', 'images', 'gun', 'gun.png')
+CROSSHAIR_PATH = join('resources', 'images', 'gun', 'crosshair.png')
+EXPLOSION_PATH = [join('resources', 'images', 'gun', 'explode', f'tile{str(i).zfill(3)}.png') for i in range(64)]
 
 BACKGROUND_PATH = join('resources', 'images', 'background', 'apartment.jpg')
 MUSIC_PATH = join('resources', 'audios', 'main.mp3')
 CLICK_PATH = join('resources', 'audios', 'game','click.mp3')
 SHOOT_PATH = join('resources', 'audios', 'game','shoot.mp3')
+
+SCORE_PATH = join('resources', 'score.txt')
