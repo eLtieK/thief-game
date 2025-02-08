@@ -16,6 +16,9 @@ def THIEF_PATH(path=None):
     if path is None:
         path = "thief" + str(random.randint(1,8)) + '.png'
     return join('resources', 'images', 'thief', path)
+GUN_PATH = join('resources', 'images', 'gun', 'gun.png')
 
 BACKGROUND_PATH = join('resources', 'images', 'background', 'apartment.jpg')
 MUSIC_PATH = join('resources', 'audios', 'main.mp3')
+CLICK_PATH = join('resources', 'audios', 'game','click.mp3')
+SHOOT_PATH = join('resources', 'audios', 'game','shoot.mp3')

@@ -2,6 +2,8 @@ from config.settings import *
 from config.loader import *
 import pygame
 from modules.sprites.thief import *
+from modules.sprites.audio import audio
+from modules.sprites.gun import *
 
 class Game:
     def __init__(self):
@@ -11,13 +13,13 @@ class Game:
         self.clock = pygame.time.Clock()
         self.running = True
         self.all_sprites = pygame.sprite.Group()
+        self.thief_sprites = pygame.sprite.Group()
         self.thief_timer()
-    
-    # pygame mixer 
-        pygame.mixer.init()  
-        self.background_music = pygame.mixer.Sound(MUSIC_PATH)  
-        self.background_music.set_volume(0.5)
-        self.background_music.play(loops=-1, maxtime=0, fade_ms=0)
+        audio.play_background_music()
+        self.spawn()
+
+    def spawn(self):
+        Gun(self.all_sprites)
     
     def thief_timer(self):
         # timer
@@ -25,7 +27,7 @@ class Game:
         pygame.time.set_timer(self.thief_event, 300)
 
     def spawn_thief(self):
-        Thief(self.all_sprites)
+        Thief((self.all_sprites, self.thief_sprites))
 
     def stop(self):
         self.running = False
@@ -37,9 +39,8 @@ class Game:
 
     def kill_thief(self):
         mouse_pos = pygame.mouse.get_pos()
-        for thief in self.all_sprites:
-            print(thief.rect.center)
-            if thief.rect.collidepoint(mouse_pos):
+        for thief in self.thief_sprites:
+            if thief.hitbox.collidepoint(mouse_pos):
                 thief.kill()
 
     def run(self):
@@ -52,11 +53,13 @@ class Game:
                 if event.type == pygame.QUIT:
                     self.stop()
                 if event.type == pygame.MOUSEBUTTONDOWN:
+                    audio.play_shoot()
                     if event.button == 1:
                         self.kill_thief()
                 if event.type == self.thief_event:
                     self.spawn_thief()
             # update
+            self.all_sprites.update(dt)
 
             # draw
             self.background(BACKGROUND_PATH)

@@ -4,6 +4,7 @@ from modules.sprites.game import *
 from modules.sprites.thief import *
 from modules.sprites import *
 from config.settings import *
+from modules.sprites.audio import audio
 
 class Intro(pygame.sprite.Sprite):
     def __init__(self, game):
@@ -37,6 +38,7 @@ class Intro(pygame.sprite.Sprite):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if self.button_rect.collidepoint(event.pos): 
                     self.is_button_pressed = True 
+                    audio.play_click()
 
             if event.type == pygame.MOUSEBUTTONUP:
                 if self.is_button_pressed: 
