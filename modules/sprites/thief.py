@@ -13,7 +13,7 @@ class Thief(pygame.sprite.Sprite):
         self.image = image
         if pos is None:
             pos = Thief.random_position()
-        self.rect = self.image.get_frect(center = pos)
+        self.rect = self.image.get_rect(center = pos)
 
     @staticmethod
     def random_position():
