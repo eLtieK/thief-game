@@ -18,3 +18,4 @@ def THIEF_PATH(path=None):
     return join('resources', 'images', 'thief', path)
 
 BACKGROUND_PATH = join('resources', 'images', 'background', 'apartment.jpg')
+MUSIC_PATH = join('resources', 'audios', 'main.mp3')

@@ -41,7 +41,6 @@ class Intro(pygame.sprite.Sprite):
             if event.type == pygame.MOUSEBUTTONUP:
                 if self.is_button_pressed: 
                     self.is_button_pressed = False
-                    self.game.spawn_thief() 
                     self.transition_to_game()
 
     def transition_to_game(self):

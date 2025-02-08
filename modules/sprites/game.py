@@ -15,7 +15,8 @@ class Game:
     
     # pygame mixer 
         pygame.mixer.init()  
-        self.background_music = pygame.mixer.Sound(join('resources', 'audios', 'main.mp3'))  
+        self.background_music = pygame.mixer.Sound(MUSIC_PATH)  
+        self.background_music.set_volume(0.5)
         self.background_music.play(loops=-1, maxtime=0, fade_ms=0)
     
     def thief_timer(self):
