@@ -22,7 +22,7 @@ class Game:
         audio.play_background_music()
 
     def spawn(self):
-        self.ui = Ui(self.display_surface)
+        self.ui = Ui(self)
         pygame.mouse.set_visible(False) 
         Gun(self.all_sprites)
         Crosshair(self.all_sprites)
@@ -36,6 +36,8 @@ class Game:
     def spawn_thief(self):
         if not all(pos == 1 for pos in Thief.pos_matrix):
             Thief(self.thief_sprites)
+        if len(self.thief_sprites) >= 8:
+            self.ui.game_over_ui.game_over()
 
     def stop(self):
         self.running = False
@@ -67,6 +69,7 @@ class Game:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         audio.play_shoot()
+                        self.ui.register_click()
                         Explosion(pygame.mouse.get_pos(), self.all_sprites)
                         self.kill_thief()
                 if event.type == self.thief_event:
@@ -78,6 +81,7 @@ class Game:
             self.background(BACKGROUND_PATH)
             self.thief_sprites.draw(self.display_surface)
             self.ui.display_score()
+            self.ui.game_over()
             self.all_sprites.draw(self.display_surface)
             pygame.display.update()
         

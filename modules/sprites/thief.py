@@ -34,5 +34,9 @@ class Thief(pygame.sprite.Sprite):
         Thief.pos_matrix[index] = 1
         return index, value
     
+    @staticmethod
+    def reset_matrix():
+        Thief.pos_matrix = [0 for i in range(16)]
+
     def reset_pos(self):
         Thief.pos_matrix[self.index] = 0

@@ -36,7 +36,6 @@ class Crosshair(pygame.sprite.Sprite):
 class Explosion(pygame.sprite.Sprite):
     def __init__(self, pos, groups, frames=None):
         super().__init__(groups)
-        print(EXPLOSION_PATH)
         if frames is None:
             self.frames = [pygame.image.load(frame).convert_alpha() for frame in EXPLOSION_PATH]
         self.frames_index = 0
